@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class OnboardingButton extends StatelessWidget {
   const OnboardingButton({super.key, required PageController pageController})
@@ -17,21 +18,25 @@ class OnboardingButton extends StatelessWidget {
 
         if (page == 4) hasViewedAll = true;
 
-        return FilledButton(
-          onPressed: () {
-            if (hasViewedAll) {
-            } else {
-              _pageController.nextPage(
-                duration: const Duration(milliseconds: 300),
-                curve: Curves.easeOutQuint,
+        return hasViewedAll
+            ? ElevatedButton(
+                onPressed: () {
+                  context.goNamed('login');
+                },
+                child: const Text('GET STARTED'),
+              )
+            : FilledButton(
+                onPressed: () {
+                  _pageController.nextPage(
+                    duration: const Duration(milliseconds: 300),
+                    curve: Curves.easeOutQuint,
+                  );
+                },
+                // style: FilledButton.styleFrom(
+                //   backgroundColor: hasViewedAll ? null : Colors.grey[850],
+                // ),
+                child: const Text('NEXT'),
               );
-            }
-          },
-          style: FilledButton.styleFrom(
-            backgroundColor: hasViewedAll ? null : Colors.grey[850],
-          ),
-          child: Text(hasViewedAll ? 'GET STARTED' : 'NEXT'),
-        );
       },
     );
   }

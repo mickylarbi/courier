@@ -16,7 +16,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF1B1B1F),
+      // backgroundColor: const Color(0xFF1B1B1F),
       body: SafeArea(
         child: Column(
           children: [
@@ -41,6 +41,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 pageController: _pageController,
               ),
             ),
+            const SizedBox(height: 20),
           ],
         ),
       ),
